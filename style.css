@@ -1,224 +1,284 @@
-/* =============================== */
-/*           VARIABLES             */
-/* =============================== */
+/* ========================================
+   VARIABLES LOVE PASTEL
+   ======================================== */
 :root {
-    --primary: #ff4e8a;
-    --primary-light: #ff77a9;
-    --secondary: #ffe5ef;
-    --background: #fff6fa;
-    --text: #3b2b2b;
-
-    --card-bg: #ffffff;
-    --shadow: 0 8px 20px rgba(255, 105, 150, 0.15);
-
-    --radius: 18px;
-    --transition: 0.35s ease;
+    --primary: #c74b9a;           /* rose framboise doux */
+    --primary-light: #e06fbb;     /* rose lumineux */
+    --secondary: #a86be8;         /* violet tendre */
+    --secondary-light: #d2b3ff;   /* lilas pastel */
+    --accent: #ff9acb;            /* rose bonbon */
+    --accent-dark: #ff76b7;       /* rose vif */
+    --white: #ffffff;
+    --off-white: #fff6fb;         /* blanc rosé */
+    --dark: #59204c;              /* prune foncé */
+    --gray: #6b5a68;              /* gris violacé */
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(200, 80, 150, 0.12);
+    --shadow-lg: 0 10px 40px rgba(200, 80, 150, 0.18);
+    --transition: all 0.3s ease;
 }
 
-/* =============================== */
-/*        GLOBAL RESET             */
-/* =============================== */
-* {
+/* RESET */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+}
+
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    background: var(--background);
-    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
     line-height: 1.6;
 }
 
-/* =============================== */
-/*            NAVBAR               */
-/* =============================== */
-#navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 18px 0;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
-    z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.nav-logo {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--primary);
-}
-
-.nav-links a {
-    margin-left: 20px;
+a {
     text-decoration: none;
-    font-weight: 600;
-    color: var(--text);
-    transition: var(--transition);
+    color: inherit;
 }
 
-.nav-links a:hover {
-    color: var(--primary);
-    transform: translateY(-2px);
+ul {
+    list-style: none;
 }
 
-/* =============================== */
-/*             HERO                */
-/* =============================== */
-#hero {
-    height: 95vh;
-    background: linear-gradient(135deg, #ff77a9 0%, #ff4e8a 26%, #ffb4d1 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 40px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-.hero-title {
-    font-size: 3.2rem;
-    font-family: "Playfair Display", serif;
-    margin-bottom: 15px;
-}
-
-.hero-slogan {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-}
-
-.btn-primary {
-    padding: 14px 32px;
-    background: white;
-    color: var(--primary);
-    border-radius: var(--radius);
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-block;
-    transition: var(--transition);
-    font-size: 1.1rem;
-}
-
-.btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-}
-
-/* =============================== */
-/*            SECTIONS             */
-/* =============================== */
 .section {
-    padding: 90px 20px;
+    padding: 100px 0;
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
     text-align: center;
-    margin-bottom: 10px;
     color: var(--primary);
-    font-family: "Playfair Display", serif;
+    margin-bottom: 12px;
 }
 
 .section-subtitle {
     text-align: center;
+    color: var(--gray);
     max-width: 600px;
-    margin: auto;
-    opacity: 0.8;
-    margin-bottom: 40px;
+    margin: 12px auto 60px;
 }
 
-/* =============================== */
-/*             CARDS               */
-/* =============================== */
+/* ========================================
+   NAVBAR LOVE
+   ======================================== */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 24px;
+    z-index: 999;
+    background: rgba(255, 200, 230, 0.75);
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 150, 190, 0.2);
+}
+
+#navbar.scrolled {
+    box-shadow: 0 4px 20px rgba(200, 60, 140, 0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--dark);
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-nav {
+    background: var(--accent);
+    color: var(--dark);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+.btn-nav:hover {
+    background: var(--accent-dark);
+    transform: scale(1.05);
+}
+
+/* ========================================
+   HERO GIRLY
+   ======================================== */
+#hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd7ef, #f6b5ff, #ffd3f3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,170,220,0.4), transparent 70%);
+    top: -40%;
+    left: -20%;
+    animation: floating 7s ease-in-out infinite alternate;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(25px, 40px) scale(1.15); }
+}
+
+.hero-content {
+    z-index: 3;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    background: linear-gradient(135deg, #ff5da8, #b36bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-slogan {
+    font-size: 1.4rem;
+    margin: 20px 0 40px;
+    color: var(--dark);
+    opacity: 0.8;
+}
+
+.btn-primary {
+    padding: 16px 38px;
+    background: linear-gradient(135deg, #ff7fc6, #c06bff);
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   CARDS (MIGNONNES)
+   ======================================== */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .card {
-    background: var(--card-bg);
-    padding: 25px;
+    background: var(--white);
+    padding: 30px 26px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 150, 210, 0.2);
     transition: var(--transition);
-    position: relative;
-    overflow: hidden;
 }
 
-/* Effet de glisse */
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(255, 105, 150, 0.25);
-}
-
-/* Petit effet "halo" rosé sur hover */
-.card::before {
-    content: "";
-    position: absolute;
-    top: -40%;
-    left: -40%;
-    width: 180%;
-    height: 180%;
-    background: radial-gradient(circle, rgba(255, 120, 170, 0.12), transparent 60%);
-    transition: var(--transition);
-    opacity: 0;
-}
-
-.card:hover::before {
-    opacity: 1;
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
 }
 
 .card-icon {
-    font-size: 2.4rem;
-    margin-bottom: 15px;
+    font-size: 3rem;
+    margin-bottom: 12px;
 }
 
-/* =============================== */
-/*          FORMULAIRE             */
-/* =============================== */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
 }
 
-input, textarea {
+.card p {
+    color: var(--gray);
+}
+
+/* ========================================
+   FORM LOVE
+   ======================================== */
+input,
+textarea {
+    width: 100%;
     padding: 14px;
     border-radius: var(--radius);
-    border: 2px solid #ffd2e1;
-    background: #fff;
+    border: 1px solid rgba(255, 120, 180, 0.4);
+    background: rgba(255,240,250,0.6);
     transition: var(--transition);
 }
 
 input:focus,
 textarea:focus {
     border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 8px rgba(255, 105, 150, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 160, 210, 0.4);
+    background: white;
 }
 
-/* =============================== */
-/*            FOOTER               */
-/* =============================== */
+/* ========================================
+   FOOTER
+   ======================================== */
 footer {
+    background: #ffdaf1;
+    padding: 40px 20px;
     text-align: center;
-    padding: 35px;
-    margin-top: 40px;
-    background: var(--secondary);
-    color: var(--primary);
-    font-weight: 600;
+    color: var(--dark);
+    opacity: 0.7;
 }
-``
