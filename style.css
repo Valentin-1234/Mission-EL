@@ -1,0 +1,112 @@
+/* ----- STYLE GÉNÉRAL ----- */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #fff6fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ----- HEADER ----- */
+header {
+  background: linear-gradient(135deg, #ff8fb7, #ff5d9e);
+  padding: 70px 20px;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+
+header .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.95;
+}
+
+/* ----- SECTION ----- */
+section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(255, 110, 150, 0.15);
+  animation: fadeIn 0.8s ease-out;
+}
+
+h2, h3 {
+  font-family: "Playfair Display", serif;
+  color: #ff3e85;
+}
+
+/* ----- LISTES ----- */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 6px;
+}
+
+/* ----- FORMULAIRE ----- */
+form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #f3b4c8;
+  background: #fff0f6;
+  transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff5d9e;
+  background: #ffe9f3;
+  outline: none;
+}
+
+/* ----- BOUTON ----- */
+button {
+  background: linear-gradient(135deg, #ff5d9e, #ff2d7b);
+  border: none;
+  padding: 15px;
+  font-size: 1.15rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 70, 140, 0.3);
+}
+
+/* ----- FOOTER ----- */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}
+
+/* ----- ANIMATIONS ----- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
