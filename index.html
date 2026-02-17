@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estelle Love </title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Play:wght@500;700&family=Inter:wght@300;400;600&display=swap
-
-  style.css
-
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Feuille de style locale -->
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -78,7 +78,8 @@
     <h2>💌 Candidate-toi pour Estelle</h2>
     <p>Remplis ce formulaire si tu penses correspondre au poste :</p>
 
-    #
+    <!-- Formulaire corrigé -->
+    <form id="applicationForm" onsubmit="handleSubmit(event)">
       <input type="text" name="name" placeholder="Ton prénom" required>
       <input type="number" name="age" placeholder="Ton âge" min="18" required>
       <input type="text" name="car" placeholder="Ta voiture (marque & modèle)" required>
