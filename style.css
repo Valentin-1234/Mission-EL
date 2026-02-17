@@ -1,135 +1,90 @@
-/* ------------------------------------
-   GLOBAL
------------------------------------- */
+/* ========================================
+   VARIABLES LOVE PASTEL
+   ======================================== */
+:root {
+    --primary: #c74b9a;           /* rose framboise doux */
+    --primary-light: #e06fbb;     /* rose lumineux */
+    --secondary: #a86be8;         /* violet tendre */
+    --secondary-light: #d2b3ff;   /* lilas pastel */
+    --accent: #ff9acb;            /* rose bonbon */
+    --accent-dark: #ff76b7;       /* rose vif */
+    --white: #ffffff;
+    --off-white: #fff6fb;         /* blanc rosé */
+    --dark: #59204c;              /* prune foncé */
+    --gray: #6b5a68;              /* gris violacé */
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(200, 80, 150, 0.12);
+    --shadow-lg: 0 10px 40px rgba(200, 80, 150, 0.18);
+    --transition: all 0.3s ease;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  background: #faf9ff;
-  color: #2a2a2a;
-  line-height: 1.7;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    line-height: 1.6;
 }
 
-h1, h2, h3 {
-  font-family: "Playfair Display", serif;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* ------------------------------------
-   HEADER
------------------------------------- */
-header {
-  text-align: center;
-  padding: 100px 20px 70px;
+ul {
+    list-style: none;
 }
 
-header h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  margin: 0;
-  background: linear-gradient(135deg, #ff5da8, #c55bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-header .subtitle {
-  font-size: 1.3rem;
-  opacity: 0.75;
-  margin-top: 10px;
-}
-
-/* ------------------------------------
-   CONTAINER
------------------------------------- */
 .container {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-/* ------------------------------------
-   CARDS (Glassmorphism + Soft Shadow)
------------------------------------- */
-.card {
-  background: rgba(255, 255, 255, 0.55);
-  border-radius: 22px;
-  padding: 30px;
-  margin-bottom: 35px;
-
-  /* glass effect */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border: 1px solid rgba(255, 255, 255, 0.4);
-
-  /* soft shadows */
-  box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.05),
-    0 10px 35px rgba(255, 150, 200, 0.15);
-
-  animation: fadeUp 0.7s ease forwards;
-  opacity: 0;
-  transform: translateY(15px);
+.section {
+    padding: 100px 0;
 }
 
-/* delay for stagger effect */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-.card:nth-child(6) { animation-delay: 0.6s; }
-
-/* ------------------------------------
-   TITRES DANS LES CARTES
------------------------------------- */
-.card h2, .card h3 {
-  margin-top: 0;
-  font-weight: 600;
-  color: #ff2f7d;
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 12px;
 }
 
-/* Badges fun & élégants */
-.badge {
-  display: inline-block;
-  padding: 6px 14px;
-  background: #ffe9f4;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ff2f7d;
-  margin-bottom: 12px;
+.section-subtitle {
+    text-align: center;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 12px auto 60px;
 }
 
-/* ------------------------------------
-   LISTES
------------------------------------- */
-.card ul {
-  padding-left: 20px;
-  margin: 0;
+/* ========================================
+   NAVBAR LOVE
+   ======================================== */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0 24px;
+    z-index: 999;
+    background: rgba(255, 200, 230, 0.75);
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 150, 190, 0.2);
 }
 
-.card ul li {
-  margin-bottom: 8px;
-}
-
-/* ------------------------------------
-   FORMULAIRE
------------------------------------- */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-input, textarea {
-  border-radius: 14px;
-  border: 1px solid #e8d7f7;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 14px 16px;
-  font-size: 1rem;
-  transition: 0.2s;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #c45bff;
+#navbar.scrolled {
