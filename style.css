@@ -1,31 +1,24 @@
-/* ----- STYLE GÉNÉRAL ----- */
+/* ------------------------------------
+   STYLE GLOBAL
+------------------------------------ */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #fff6fa;
+  background: #fff4f8;
   color: #333;
-  line-height: 1.6;
 }
 
-/* Accessible visually-hidden helper for form labels */
-.sr-only {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ----- HEADER ----- */
+/* ------------------------------------
+   HEADER
+------------------------------------ */
 header {
-  background: linear-gradient(135deg, #ff8fb7, #ff5d9e);
-  padding: 70px 20px;
+  background: linear-gradient(135deg, #ff7fb8, #ff4f94);
+  padding: 80px 20px;
   text-align: center;
   color: white;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 100, 150, 0.35);
 }
 
 header h1 {
@@ -35,84 +28,123 @@ header h1 {
 }
 
 header .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   opacity: 0.95;
 }
 
-/* ----- SECTION ----- */
-section {
+/* ------------------------------------
+   CONTAINER PRINCIPAL
+------------------------------------ */
+.container {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 35px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* ------------------------------------
+   CARTES (les petites cases)
+------------------------------------ */
+.card {
   background: white;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(255, 110, 150, 0.15);
-  animation: fadeIn 0.8s ease-out;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 20px rgba(255, 100, 150, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.6s ease-out;
 }
 
-h2, h3 {
+/* effet hover fun */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 28px rgba(255, 80, 150, 0.25);
+}
+
+/* titres */
+.card h2, 
+.card h3 {
   font-family: "Playfair Display", serif;
-  color: #ff3e85;
+  color: #ff2f7d;
+  margin-top: 0;
 }
 
-/* ----- LISTES ----- */
-ul {
+/* listes */
+.card ul {
   padding-left: 20px;
 }
 
-ul li {
+.card ul li {
   margin-bottom: 6px;
+  line-height: 1.5;
 }
 
-/* ----- FORMULAIRE ----- */
+/* petit badge fun */
+.badge {
+  display: inline-block;
+  background: #ffe3f0;
+  color: #ff2f7d;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ------------------------------------
+   FORMULAIRE
+------------------------------------ */
 form {
-  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 input, textarea {
-  padding: 12px;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid #f8b9d0;
+  background: #fff0f8;
+  transition: 0.2s ease;
   font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #f3b4c8;
-  background: #fff0f6;
-  transition: 0.2s;
 }
 
 input:focus, textarea:focus {
-  border-color: #ff5d9e;
-  background: #ffe9f3;
   outline: none;
+  border-color: #ff5da8;
+  background: #ffe7f3;
 }
 
-/* ----- BOUTON ----- */
+/* bouton fun */
 button {
-  background: linear-gradient(135deg, #ff5d9e, #ff2d7b);
+  background: linear-gradient(135deg, #ff5da8, #ff2f7d);
   border: none;
   padding: 15px;
-  font-size: 1.15rem;
-  border-radius: 12px;
   color: white;
+  font-size: 1.2rem;
   font-weight: bold;
-  cursor: pointer;
+  border-radius: 14px;
   transition: 0.25s ease;
+  cursor: pointer;
 }
 
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(255, 70, 140, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 60, 120, 0.3);
 }
 
-/* ----- FOOTER ----- */
+/* ------------------------------------
+   FOOTER
+------------------------------------ */
 footer {
-  text-align: center;
+  margin-top: 50px;
   padding: 30px;
+  text-align: center;
   color: #777;
 }
 
-/* ----- ANIMATIONS ----- */
+/* ------------------------------------
+   ANIMATION D’APPARITION
+------------------------------------ */
 @keyframes fadeIn {
   from {
     opacity: 0;
