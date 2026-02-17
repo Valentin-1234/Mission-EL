@@ -73,7 +73,7 @@ ul {
 }
 
 /* ========================================
-   NAVBAR LOVE
+   NAVBAR
    ======================================== */
 #navbar {
     position: fixed;
@@ -153,7 +153,7 @@ ul {
 }
 
 /* ========================================
-   HERO GIRLY
+   HERO
    ======================================== */
 #hero {
     min-height: 100vh;
@@ -184,6 +184,7 @@ ul {
 
 .hero-content {
     z-index: 3;
+    padding: 20px;
 }
 
 .hero-title {
@@ -216,7 +217,7 @@ ul {
 }
 
 /* ========================================
-   CARDS (MIGNONNES)
+   CARDS
    ======================================== */
 .cards-grid {
     display: grid;
@@ -248,13 +249,21 @@ ul {
     margin-bottom: 10px;
 }
 
-.card p {
+.card p,
+.card li {
     color: var(--gray);
+    line-height: 1.5;
 }
 
 /* ========================================
-   FORM LOVE
+   FORMULAIRE
    ======================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
 input,
 textarea {
     width: 100%;
@@ -263,6 +272,7 @@ textarea {
     border: 1px solid rgba(255, 120, 180, 0.4);
     background: rgba(255,240,250,0.6);
     transition: var(--transition);
+    font-size: 1rem;
 }
 
 input:focus,
@@ -280,5 +290,5 @@ footer {
     padding: 40px 20px;
     text-align: center;
     color: var(--dark);
-    opacity: 0.7;
+    opacity: 0.75;
 }
