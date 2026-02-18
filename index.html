@@ -5,538 +5,922 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estelle Love ❤️ — Recrutement en cours</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+```
+:root {
+  --pink: #e91e8c;
+  --pink-light: #ff6eb4;
+  --pink-dark: #b5126a;
+  --cream: #fff9f5;
+  --dark-bg: #120810;
+  --dark-card: #1e0d18;
+  --dark-border: rgba(233,30,140,0.25);
+  --text-on-dark: #f0e0e8;
+  --text-muted-dark: rgba(240,224,232,0.6);
+  --text: #1e0a14;
+  --text-muted: #7a5060;
+  --border: rgba(233,30,140,0.15);
+  --shadow: 0 8px 40px rgba(233,30,140,0.12);
+  --nav-h: 68px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(255,249,245,0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  transition: box-shadow .3s;
+}
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(233,30,140,.1); }
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.35rem;
+  color: var(--text); letter-spacing: -.5px; text-decoration: none;
+}
+.nav-brand span { color: var(--pink); }
+
+.nav-links { list-style: none; display: flex; align-items: center; gap: 2px; }
+.nav-links > li > a,
+.nav-links > li > button.dropdown-toggle {
+  display: block; text-decoration: none;
+  color: var(--text);
+  font-size: .88rem; font-weight: 500;
+  padding: 7px 11px; border-radius: 8px;
+  transition: all .2s; cursor: pointer;
+  background: none; border: none;
+  font-family: 'DM Sans', sans-serif; font-size: .88rem;
+}
+.nav-links > li > a:hover,
+.nav-links > li > button.dropdown-toggle:hover {
+  background: rgba(233,30,140,.08); color: var(--pink);
+}
+
+.dropdown { position: relative; }
+.dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 8px); left: 0;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow); min-width: 175px;
+  list-style: none; padding: 8px; flex-direction: column; gap: 2px; z-index: 999;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu { display: flex; }
+.dropdown-menu a {
+  display: block; text-decoration: none; color: var(--text);
+  padding: 8px 12px; border-radius: 8px; font-size: .87rem; transition: background .15s;
+}
+.dropdown-menu a:hover { background: rgba(233,30,140,.07); color: var(--pink); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  width: 24px; height: 2px; background: var(--text);
+  border-radius: 2px; transition: all .3s; display: block;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: calc(var(--nav-h) + 60px) 24px 80px;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(233,30,140,.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,110,180,.07) 0%, transparent 50%),
+    var(--cream);
+  position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(233,30,140,.04) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(233,30,140,.1); border: 1px solid rgba(233,30,140,.3);
+  color: var(--pink-dark);
+  padding: 6px 18px; border-radius: 999px;
+  font-size: .84rem; font-weight: 500;
+  margin-bottom: 28px; letter-spacing: .3px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--text); margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--pink); }
+.hero-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 540px; margin-bottom: 36px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px; }
+
+.btn {
+  display: inline-block; padding: 13px 26px; border-radius: 11px;
+  font-weight: 500; font-size: .95rem; text-decoration: none; cursor: pointer;
+  border: 2px solid transparent; transition: all .25s; font-family: 'DM Sans', sans-serif;
+}
+.btn-primary { background: var(--pink); color: #fff; border-color: var(--pink); }
+.btn-primary:hover { background: var(--pink-dark); border-color: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,.3); }
+.btn-outline { background: transparent; color: var(--pink); border-color: var(--pink); }
+.btn-outline:hover { background: rgba(233,30,140,.08); transform: translateY(-2px); }
+.btn-full { width: 100%; }
+
+.stats { display: flex; gap: 48px; flex-wrap: wrap; justify-content: center; }
+.stat { text-align: center; }
+.stat-num { display: block; font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--pink); line-height: 1; }
+.stat-label { display: block; font-size: .82rem; color: var(--text-muted); margin-top: 4px; max-width: 120px; }
+.stat-note { margin-top: 14px; font-size: .78rem; color: var(--text-muted); font-style: italic; }
+
+/* ===== SECTIONS ===== */
+.section { padding: 96px 0; }
+
+/* light */
+.section.light { background: var(--cream); }
+.section.light .section-label { color: var(--pink-dark); }
+.section.light h2 { color: var(--text); }
+.section.light .section-sub { color: var(--text-muted); }
+
+/* dark */
+.section.dark { background: var(--dark-bg); }
+.section.dark .section-label { color: var(--pink-light); }
+.section.dark h2 { color: #fff; }
+.section.dark .section-sub { color: var(--text-muted-dark); }
+
+.section-label { font-size: .78rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 14px; line-height: 1.15; }
+.section-sub { font-size: 1rem; max-width: 560px; margin-bottom: 52px; }
+
+/* ===== PROFILE ===== */
+.profile-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: center; }
+
+.profile-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 24px; padding: 40px 28px; text-align: center; box-shadow: var(--shadow);
+}
+.profile-avatar { font-size: 4rem; margin-bottom: 14px; }
+.profile-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text); margin-bottom: 4px; }
+.profile-title { color: var(--pink); font-size: .88rem; font-weight: 500; margin-bottom: 18px; }
+.profile-card blockquote { font-style: italic; color: var(--text-muted); font-size: .88rem; border-left: 3px solid var(--pink); padding-left: 14px; text-align: left; }
+
+.value-tag { font-weight: 600; font-size: 1.05rem; margin-bottom: 18px; color: var(--pink); }
+.value-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.value-list li {
+  padding: 12px 16px; background: #fff; border: 1px solid var(--border);
+  border-radius: 11px; font-size: .92rem; color: var(--text);
+  transition: border-color .2s, box-shadow .2s;
+}
+.value-list li:hover { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,30,140,.07); }
+
+/* ===== CRITERIA (dark bg) ===== */
+.criteria-block { margin-bottom: 52px; }
+.criteria-block h3 { font-family: 'Playfair Display', serif; font-size: 1.45rem; margin-bottom: 22px; color: #fff; }
+.criteria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+
+.crit-card {
+  background: var(--dark-card); border: 1px solid var(--dark-border);
+  border-radius: 16px; padding: 26px 22px; transition: transform .25s, border-color .25s;
+}
+.crit-card:hover { transform: translateY(-4px); border-color: var(--pink-light); }
+.crit-icon { font-size: 2rem; margin-bottom: 10px; }
+.crit-card h4 { font-weight: 600; margin-bottom: 8px; font-size: .97rem; color: #fff; }
+.crit-card p { font-size: .88rem; color: var(--text-muted-dark); }
+
+.tags-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag { padding: 8px 16px; border-radius: 999px; font-size: .87rem; font-weight: 500; }
+.tag.green { background: rgba(29,185,84,.14); border: 1px solid rgba(29,185,84,.35); color: #4ade80; }
+.tag.red { background: rgba(229,62,62,.14); border: 1px solid rgba(229,62,62,.3); color: #fca5a5; }
+
+.bonus-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 10px; }
+.bonus-item {
+  background: var(--dark-card); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 11px; padding: 13px 16px;
+  font-size: .9rem; color: var(--text-on-dark); transition: background .2s;
+}
+.bonus-item:hover { background: rgba(233,30,140,.1); }
+
+.penalty-table {
+  background: rgba(229,62,62,.05); border: 1px solid rgba(229,62,62,.2);
+  border-radius: 16px; overflow: hidden;
+}
+.penalty-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,.05);
+  font-size: .88rem; flex-wrap: wrap; gap: 8px; cursor: pointer; transition: background .15s;
+}
+.penalty-row:hover { background: rgba(229,62,62,.07); }
+.penalty-row:last-child { border-bottom: none; }
+.penalty-item { color: var(--text-on-dark); }
+.penalty-val { color: #fca5a5; font-weight: 600; font-size: .84rem; white-space: nowrap; transition: opacity .2s; }
+
+/* ===== MISSIONS (light) ===== */
+.missions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+.mission-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 30px 26px;
+  position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s;
+}
+.mission-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.mission-num {
+  font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700;
+  color: rgba(233,30,140,.1); position: absolute; top: 14px; right: 18px; line-height: 1;
+}
+.mission-card h4 { font-weight: 600; font-size: 1.05rem; margin-bottom: 9px; color: var(--text); }
+.mission-card p { font-size: .88rem; color: var(--text-muted); }
+
+/* ===== RÉMUNÉRATION (dark) ===== */
+.remu-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
+.remu-card {
+  background: var(--dark-card); border: 1px solid var(--dark-border);
+  border-radius: 22px; padding: 38px 32px; position: relative;
+}
+.remu-card.featured { border-color: var(--pink); background: rgba(233,30,140,.07); }
+.remu-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--pink); color: #fff;
+  padding: 4px 16px; border-radius: 999px; font-size: .78rem; font-weight: 600; white-space: nowrap;
+}
+.remu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-bottom: 8px; color: #fff; }
+.remu-price { font-size: 2.4rem; font-weight: 700; color: var(--pink-light); margin-bottom: 22px; display: block; }
+.remu-card ul { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.remu-card li { font-size: .9rem; color: var(--text-on-dark); }
+.remu-note { font-size: .78rem; color: var(--text-muted-dark); font-style: italic; }
+.ideal-section h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 18px; color: #fff; }
+.ideal-card {
+  background: var(--dark-card); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 18px; padding: 26px 22px; text-align: center;
+}
+.ideal-avatar { font-size: 3rem; margin-bottom: 12px; }
+.ideal-card h4 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 10px; color: #fff; }
+.ideal-card p { font-size: .88rem; margin-bottom: 10px; color: var(--text-on-dark); }
+.ideal-note { font-size: .77rem; color: var(--text-muted-dark); font-style: italic; }
+
+/* ===== FAQ (light) ===== */
+.faq-list { max-width: 780px; display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+  border: 1px solid var(--border); border-radius: 13px; overflow: hidden;
+  background: #fff; transition: border-color .2s;
+}
+.faq-item.open { border-color: var(--pink); }
+.faq-question {
+  width: 100%; background: none; border: none;
+  padding: 18px 22px; text-align: left;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .95rem;
+  color: var(--text); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  transition: color .2s;
+}
+.faq-question:hover { color: var(--pink); }
+.faq-icon { font-size: 1.4rem; font-weight: 300; color: var(--pink); transition: transform .3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .38s ease; }
+.faq-answer.open { max-height: 500px; }
+.faq-answer-inner { padding: 0 22px 18px; }
+.faq-answer-inner p { font-size: .91rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ===== TESTIMONIALS (dark) ===== */
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; }
+.testi-card {
+  background: var(--dark-card); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px; padding: 26px 22px; transition: border-color .25s, transform .25s;
+}
+.testi-card:hover { border-color: rgba(233,30,140,.35); transform: translateY(-4px); }
+.stars { color: #f0b429; font-size: .95rem; letter-spacing: 2px; margin-bottom: 14px; }
+.testi-quote { font-size: .9rem; color: var(--text-muted-dark); font-style: italic; margin-bottom: 18px; line-height: 1.65; }
+.testi-author { display: flex; align-items: center; gap: 11px; margin-bottom: 13px; }
+.testi-avatar {
+  width: 38px; height: 38px; background: rgba(233,30,140,.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; color: var(--pink-light); flex-shrink: 0;
+}
+.testi-name { display: block; font-size: .88rem; font-weight: 600; color: #fff; }
+.testi-role { font-size: .76rem; color: var(--text-muted-dark); }
+.testi-response {
+  background: rgba(233,30,140,.09); border-left: 3px solid var(--pink);
+  padding: 9px 13px; border-radius: 0 8px 8px 0;
+  font-size: .8rem; color: var(--pink-light);
+}
+
+/* ===== CONTACT (light) ===== */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 52px; align-items: start; }
+.contact-rules h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 18px; }
+.rule-list { display: flex; flex-direction: column; gap: 9px; }
+.rule { padding: 11px 15px; background: #fff; border: 1px solid var(--border); border-radius: 10px; font-size: .86rem; color: var(--text); }
+
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: .83rem; font-weight: 500; color: var(--text); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: .9rem;
+  color: var(--text); background: #fff;
+  transition: border-color .2s, box-shadow .2s; outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,30,140,.1); }
+
+.checkbox-label {
+  display: flex; align-items: flex-start; gap: 11px; cursor: pointer;
+  font-size: .86rem; color: var(--text-muted); line-height: 1.5;
+}
+.checkbox-label input { margin-top: 3px; accent-color: var(--pink); flex-shrink: 0; }
+
+.form-success {
+  text-align: center; padding: 56px 36px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 20px; box-shadow: var(--shadow);
+}
+.success-icon { font-size: 3.5rem; margin-bottom: 14px; }
+.form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-bottom: 10px; color: var(--pink); }
+.form-success p { color: var(--text-muted); font-size: .97rem; }
+
+/* ===== FOOTER ===== */
+.footer { background: #0b0610; color: rgba(255,255,255,.6); padding: 60px 0 28px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 44px; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+.footer-logo span { color: var(--pink); }
+.footer-brand p { font-size: .87rem; line-height: 1.7; color: rgba(255,255,255,.55); }
+.footer-nav h4 { color: #fff; font-weight: 600; font-size: .87rem; margin-bottom: 14px; letter-spacing: .5px; }
+.footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.footer-nav a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .86rem; transition: color .2s; }
+.footer-nav a:hover { color: var(--pink-light); }
+.footer-nav p { font-size: .86rem; line-height: 1.85; color: rgba(255,255,255,.5); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 22px; display: flex; flex-direction: column; gap: 5px; }
+.footer-bottom p { font-size: .81rem; color: rgba(255,255,255,.3); }
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .profile-grid, .remu-grid, .contact-wrapper { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: #fff; flex-direction: column; align-items: stretch;
+    padding: 16px; gap: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.12);
+    transform: translateY(-110%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    z-index: 999;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .dropdown-menu {
+    position: static; box-shadow: none; border: none;
+    background: rgba(233,30,140,.05); border-radius: 8px; margin-top: 4px;
+  }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .stats { gap: 28px; }
+  .hero-cta { flex-direction: column; align-items: center; }
+}
+```
+
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
+<!-- NAVBAR -->
 
-  <nav class="navbar" id="navbar">
-    <div class="nav-brand">Estelle<span>Love</span> ❤️</div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#profil">Le Profil</a></li>
-      <li class="dropdown">
-        <a href="#criteres" class="dropdown-toggle">Critères ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="#criteres-physiques">Physiques</a></li>
-          <li><a href="#criteres-comportement">Comportement</a></li>
-          <li><a href="#bonus">Bonus</a></li>
+<nav class="navbar" id="navbar">
+  <a href="#accueil" class="nav-brand">Estelle<span>Love</span> ❤️</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#profil">Le Profil</a></li>
+    <li class="dropdown">
+      <button class="dropdown-toggle">Critères ▾</button>
+      <ul class="dropdown-menu">
+        <li><a href="#criteres-physiques">Physiques</a></li>
+        <li><a href="#criteres-comportement">Comportement</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </li>
+    <li><a href="#missions">Missions</a></li>
+    <li><a href="#remuneration">Rémunération</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#temoignages">Avis</a></li>
+    <li><a href="#candidater">Postuler ❤️</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="accueil">
+  <div class="hero-badge">🏆 Poste à pourvoir immédiatement</div>
+  <h1>L'amour sur mesure.<br><em>Si vous le méritez.</em></h1>
+  <p class="hero-sub">Une femme exceptionnelle. Des critères clairs. Un CDI à vie si affinités.<br>Parce qu'Estelle mérite son homme idéal — et complet, avec dents.</p>
+  <div class="hero-cta">
+    <a href="#criteres" class="btn btn-primary">Voir le cahier des charges</a>
+    <a href="#candidater" class="btn btn-outline">Postuler maintenant</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="stat-num" data-target="1">0</span><span class="stat-label">Estelle disponible</span></div>
+    <div class="stat"><span class="stat-num" data-target="0">0</span><span class="stat-label">Mecs qui cochent toutes les cases</span></div>
+    <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% sans prise de tête</span></div>
+  </div>
+  <p class="stat-note">* Ceux qui se reconnaissent dans la catégorie 0, passez votre chemin.</p>
+</section>
+
+<!-- PROFIL -->
+
+<section class="section light" id="profil">
+  <div class="container">
+    <div class="section-label">Le dossier</div>
+    <h2>À propos d'Estelle</h2>
+    <div class="profile-grid">
+      <div class="profile-card reveal">
+        <div class="profile-avatar">👩‍🦰</div>
+        <h3>Estelle</h3>
+        <p class="profile-title">Femme extraordinaire disponible</p>
+        <blockquote>"Je sais ce que je veux. C'est rare, appréciez-le."<br>— Estelle</blockquote>
+      </div>
+      <div class="reveal">
+        <div class="value-tag">💖 Ce qu'elle offre</div>
+        <ul class="value-list">
+          <li>✨ Une partenaire qui sait exactement ce qu'elle veut</li>
+          <li>😂 Des fous rires garantis (et vérifiés par des témoins)</li>
+          <li>🤗 Des câlins aux moments les plus inopinément parfaits</li>
+          <li>🔥 Une vie de couple réelle, pas une colocation déguisée</li>
+          <li>📋 Des critères honnêtes — vous savez à quoi vous attendre</li>
+          <li>💝 Un amour sincère pour la bonne personne</li>
         </ul>
-      </li>
-      <li><a href="#missions">Missions</a></li>
-      <li><a href="#remuneration">Rémunération</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#temoignages">Témoignages</a></li>
-      <li><a href="#candidater">Postuler</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero" id="accueil">
-    <div class="hero-badge">🏆 Poste à pourvoir immédiatement</div>
-    <h1>L'amour sur mesure.<br><em>Si vous le méritez.</em></h1>
-    <p class="hero-sub">Une femme exceptionnelle. Des critères clairs. Un CDI à vie si affinités.<br>Parce qu'Estelle mérite son homme idéal — et complet, avec dents.</p>
-    <div class="hero-cta">
-      <a href="#criteres" class="btn btn-primary">Voir le cahier des charges</a>
-      <a href="#candidater" class="btn btn-outline">Postuler maintenant</a>
-    </div>
-    <div class="stats">
-      <div class="stat"><span class="stat-num" data-target="1">0</span><span class="stat-label">Estelle disponible</span></div>
-      <div class="stat"><span class="stat-num" data-target="0">0</span><span class="stat-label">Mecs qui cochent toutes les cases</span></div>
-      <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% sans prise de tête</span></div>
-    </div>
-    <p class="stat-note">* Ceux qui se reconnaissent dans la catégorie 0, passez votre chemin.</p>
-  </section>
-
-  <!-- PROFIL -->
-
-  <section class="section" id="profil">
-    <div class="container">
-      <div class="section-label">Le dossier de candidature</div>
-      <h2>À propos d'Estelle</h2>
-      <div class="profile-grid">
-        <div class="profile-card">
-          <div class="profile-avatar">👩‍🦰</div>
-          <h3>Estelle</h3>
-          <p class="profile-title">Femme extraordinaire disponible</p>
-          <blockquote>"Je sais ce que je veux. C'est rare, appréciez-le."<br>— Estelle</blockquote>
-        </div>
-        <div class="profile-info">
-          <div class="value-tag">💖 Ce qu'elle offre</div>
-          <ul class="value-list">
-            <li>✨ Une partenaire qui sait exactement ce qu'elle veut</li>
-            <li>😂 Des fous rires garantis (et vérifiés par des témoins)</li>
-            <li>🤗 Des câlins aux moments les plus inopinément parfaits</li>
-            <li>🔥 Une vie de couple réelle, pas une colocation déguisée</li>
-            <li>📋 Des critères honnêtes — vous savez à quoi vous attendre</li>
-            <li>💝 Un amour sincère pour la bonne personne</li>
-          </ul>
-        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CRITÈRES -->
+<!-- CRITÈRES -->
 
-  <section class="section dark" id="criteres">
-    <div class="container">
-      <div class="section-label">Conditions minimales d'accès</div>
-      <h2>Le cahier des charges</h2>
-      <p class="section-sub">Transparent, honnête et non-négociable. Comme les étoiles dans le ciel — elles sont là, point.</p>
+<section class="section dark" id="criteres">
+  <div class="container">
+    <div class="section-label">Conditions minimales d'accès</div>
+    <h2>Le cahier des charges</h2>
+    <p class="section-sub">Transparent, honnête et non-négociable. Comme les étoiles dans le ciel.</p>
 
 ```
-  <!-- Physiques -->
-  <div id="criteres-physiques" class="criteria-block">
-    <h3>💖 Conditions physiques minimales</h3>
-    <div class="criteria-grid">
-      <div class="crit-card">
-        <div class="crit-icon">🦷</div>
-        <h4>Les dents</h4>
-        <p>Pas forcément 32. Mais un sourire qui ne fait pas fuir les enfants ni les adultes sobres. C'est le minimum syndical.</p>
-      </div>
-      <div class="crit-card">
-        <div class="crit-icon">⚖️</div>
-        <h4>Corpulence raisonnable</h4>
-        <p>Doit pouvoir tenir dans un lit sans coloniser 80% de la surface disponible. L'espace vital est un droit fondamental.</p>
-      </div>
-      <div class="crit-card">
-        <div class="crit-icon">🧩</div>
-        <h4>Entier</h4>
-        <p>Bras, jambes, oreilles… On veut un modèle complet, pas un puzzle. Âge requis : 40 à 47 ans.</p>
-      </div>
-    </div>
+<div class="criteria-block" id="criteres-physiques">
+  <h3>💖 Conditions physiques minimales</h3>
+  <div class="criteria-grid">
+    <div class="crit-card reveal"><div class="crit-icon">🦷</div><h4>Les dents</h4><p>Pas forcément 32. Mais un sourire qui ne fait pas fuir les enfants ni les adultes sobres.</p></div>
+    <div class="crit-card reveal"><div class="crit-icon">⚖️</div><h4>Corpulence raisonnable</h4><p>Doit tenir dans un lit sans coloniser 80% de la surface. L'espace vital est un droit fondamental.</p></div>
+    <div class="crit-card reveal"><div class="crit-icon">🧩</div><h4>Entier</h4><p>Bras, jambes, oreilles… Un modèle complet, pas un puzzle. Âge requis : 40 à 47 ans.</p></div>
   </div>
+</div>
 
-  <!-- Mobilité -->
-  <div class="criteria-block">
-    <h3>🚗 Mobilité & Autonomie</h3>
-    <div class="criteria-grid">
-      <div class="crit-card">
-        <div class="crit-icon">🚙</div>
-        <h4>Permis B + véhicule</h4>
-        <p>Obligatoires. Le premier date se fait EN VOITURE. Pas trottinette, pas vélo, pas voiture sans permis. En voiture.</p>
-      </div>
-      <div class="crit-card">
-        <div class="crit-icon">👦</div>
-        <h4>Enfants autonomes</h4>
-        <p>Si vous en avez : ils doivent être capables de manger seuls et de ne pas appeler leur père toutes les 20 minutes.</p>
-      </div>
-    </div>
+<div class="criteria-block">
+  <h3>🚗 Mobilité & Autonomie</h3>
+  <div class="criteria-grid">
+    <div class="crit-card reveal"><div class="crit-icon">🚙</div><h4>Permis B + véhicule</h4><p>Obligatoires. Le 1er date EN VOITURE. Pas trottinette, pas vélo, pas voiture sans permis.</p></div>
+    <div class="crit-card reveal"><div class="crit-icon">👦</div><h4>Enfants autonomes</h4><p>Si vous en avez : capables de manger seuls et de ne pas appeler leur père toutes les 20 minutes.</p></div>
   </div>
+</div>
 
-  <!-- Comportement -->
-  <div id="criteres-comportement" class="criteria-block">
-    <h3>😄 Compétences comportementales</h3>
-    <div class="tags-grid">
-      <span class="tag green">Pas fainéant</span>
-      <span class="tag green">Agréable</span>
-      <span class="tag green">Beaucoup d'humour</span>
-      <span class="tag green">Sincère</span>
-      <span class="tag red">Égocentrique</span>
-      <span class="tag red">Invisible émotionnellement</span>
-      <span class="tag red">Allergique aux câlins</span>
-      <span class="tag red">"T'es trop sensible"</span>
-    </div>
+<div class="criteria-block" id="criteres-comportement">
+  <h3>😄 Compétences comportementales</h3>
+  <div class="tags-grid">
+    <span class="tag green">Pas fainéant</span>
+    <span class="tag green">Agréable</span>
+    <span class="tag green">Beaucoup d'humour</span>
+    <span class="tag green">Sincère</span>
+    <span class="tag red">Égocentrique</span>
+    <span class="tag red">Invisible émotionnellement</span>
+    <span class="tag red">Allergique aux câlins</span>
+    <span class="tag red">"T'es trop sensible"</span>
   </div>
+</div>
 
-  <!-- Bonus -->
-  <div id="bonus" class="criteria-block">
-    <h3>⭐ Bonus appréciés (mais non obligatoires... enfin presque)</h3>
-    <div class="bonus-list">
-      <div class="bonus-item">✅ Sait cuisiner (au moins les pâtes sans les brûler)</div>
-      <div class="bonus-item">✅ N'appelle pas sa mère pour lancer une machine</div>
-      <div class="bonus-item">✅ Ne dit pas "t'es trop sensible" quand Estelle exprime une émotion</div>
-      <div class="bonus-item">✅ Capable de planifier une sortie sans dire "comme tu veux"</div>
-      <div class="bonus-item">✅ Cerveau fonctionnel dès le lundi matin</div>
-      <div class="bonus-item">✅ A compris que "faire le ménage" ≠ déplacer la poussière</div>
-    </div>
+<div class="criteria-block" id="bonus">
+  <h3>⭐ Bonus appréciés</h3>
+  <div class="bonus-list">
+    <div class="bonus-item reveal">✅ Sait cuisiner (au moins les pâtes sans les brûler)</div>
+    <div class="bonus-item reveal">✅ N'appelle pas sa mère pour lancer une machine</div>
+    <div class="bonus-item reveal">✅ Ne dit pas "t'es trop sensible" quand Estelle exprime une émotion</div>
+    <div class="bonus-item reveal">✅ Capable de planifier une sortie sans dire "comme tu veux"</div>
+    <div class="bonus-item reveal">✅ Cerveau fonctionnel dès le lundi matin</div>
+    <div class="bonus-item reveal">✅ A compris que "faire le ménage" ≠ déplacer la poussière</div>
   </div>
+</div>
 
-  <!-- Suppléments & Pénalités -->
-  <div class="criteria-block">
-    <h3>🚫 Pénalités automatiques</h3>
-    <div class="penalty-table">
-      <div class="penalty-row">
-        <span class="penalty-item">"Mon ex était pas comme ça"</span>
-        <span class="penalty-val">Blacklist immédiate</span>
-      </div>
-      <div class="penalty-row">
-        <span class="penalty-item">Arriver en retard au 1er RDV sans prévenir</span>
-        <span class="penalty-val">Candidature annulée</span>
-      </div>
-      <div class="penalty-row">
-        <span class="penalty-item">Dire "comme tu veux" plus de 3 fois</span>
-        <span class="penalty-val">-50% chance de 2ème date</span>
-      </div>
-      <div class="penalty-row">
-        <span class="penalty-item">Ne pas faire de câlins</span>
-        <span class="penalty-val">Rupture immédiate</span>
-      </div>
-      <div class="penalty-row">
-        <span class="penalty-item">Appeler sa mère pour une machine à laver</span>
-        <span class="penalty-val">Motif légitime de rupture</span>
-      </div>
-    </div>
+<div class="criteria-block">
+  <h3>🚫 Pénalités automatiques <span style="font-size:.85rem;font-weight:400;color:var(--text-muted-dark)">(cliquez pour révéler la sanction)</span></h3>
+  <div class="penalty-table">
+    <div class="penalty-row"><span class="penalty-item">"Mon ex était pas comme ça"</span><span class="penalty-val">Blacklist immédiate</span></div>
+    <div class="penalty-row"><span class="penalty-item">Arriver en retard sans prévenir</span><span class="penalty-val">Candidature annulée</span></div>
+    <div class="penalty-row"><span class="penalty-item">"Comme tu veux" plus de 3 fois</span><span class="penalty-val">-50% chance de 2ème date</span></div>
+    <div class="penalty-row"><span class="penalty-item">Ne jamais initier un câlin</span><span class="penalty-val">Motif de rupture immédiate</span></div>
+    <div class="penalty-row"><span class="penalty-item">Appeler sa mère pour la machine à laver</span><span class="penalty-val">Motif légitime de rupture</span></div>
   </div>
 </div>
 ```
 
-  </section>
+  </div>
+</section>
 
-  <!-- MISSIONS -->
+<!-- MISSIONS -->
 
-  <section class="section" id="missions">
-    <div class="container">
-      <div class="section-label">Fiche de poste</div>
-      <h2>Missions principales</h2>
-      <p class="section-sub">Ce qu'on attend du candidat retenu. Lisez attentivement avant de postuler.</p>
-      <div class="missions-grid">
-        <div class="mission-card">
-          <div class="mission-num">01</div>
-          <h4>Faire rire</h4>
-          <p>Soutenir, partager, câliner, et ne pas disparaître comme un Pokémon après le premier désaccord.</p>
-        </div>
-        <div class="mission-card">
-          <div class="mission-num">02</div>
-          <h4>Participer</h4>
-          <p>À la vie de couple, pas en mode colocataire. Une vraie présence, pas un fantôme en pantoufles.</p>
-        </div>
-        <div class="mission-card">
-          <div class="mission-num">03</div>
-          <h4>Respecter l'espace</h4>
-          <p>Savoir venir faire un câlin au bon moment. Être présent, mais pas collant. L'équilibre, c'est tout un art.</p>
-        </div>
-        <div class="mission-card">
-          <div class="mission-num">04</div>
-          <h4>Surprendre</h4>
-          <p>Positivement, bien sûr. Pas du genre "surprise, j'ai invité mes amis sans prévenir un dimanche matin".</p>
-        </div>
-      </div>
+<section class="section light" id="missions">
+  <div class="container">
+    <div class="section-label">Fiche de poste</div>
+    <h2>Missions principales</h2>
+    <p class="section-sub">Ce qu'on attend du candidat retenu. Lisez attentivement avant de postuler.</p>
+    <div class="missions-grid">
+      <div class="mission-card reveal"><div class="mission-num">01</div><h4>Faire rire</h4><p>Soutenir, partager, câliner, et ne pas disparaître comme un Pokémon après le premier désaccord.</p></div>
+      <div class="mission-card reveal"><div class="mission-num">02</div><h4>Participer</h4><p>À la vie de couple, pas en mode colocataire. Une vraie présence, pas un fantôme en pantoufles.</p></div>
+      <div class="mission-card reveal"><div class="mission-num">03</div><h4>Respecter l'espace</h4><p>Être présent, mais pas collant. Savoir venir faire un câlin au bon moment. L'équilibre, c'est un art.</p></div>
+      <div class="mission-card reveal"><div class="mission-num">04</div><h4>Surprendre</h4><p>Positivement. Pas du genre "surprise, j'ai invité mes amis sans prévenir un dimanche matin".</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RÉMUNÉRATION -->
+<!-- RÉMUNÉRATION -->
 
-  <section class="section dark" id="remuneration">
-    <div class="container">
-      <div class="section-label">Package de rémunération</div>
-      <h2>Ce que vous gagnez</h2>
-      <p class="section-sub">Transparent, généreux, et non-négociable à la hausse (ni à la baisse).</p>
-      <div class="remu-grid">
-        <div class="remu-card featured">
-          <div class="remu-badge">🏆 Idéal</div>
-          <h3>CDI à vie</h3>
-          <p class="remu-price">∞ Amour</p>
-          <ul>
-            <li>💝 Amour sincère et authentique</li>
-            <li>😂 Complicité & fous rires quotidiens</li>
-            <li>🤗 Câlins illimités (à la demande)</li>
-            <li>🌟 Projets communs & aventures partagées</li>
-            <li>🎯 Une partenaire qui sait ce qu'elle veut</li>
-            <li>✨ Possibilité d'évolution : bonheur à long terme</li>
-          </ul>
-          <p class="remu-note">Si affinités. Évaluation après période d'essai.</p>
-        </div>
+<section class="section dark" id="remuneration">
+  <div class="container">
+    <div class="section-label">Package</div>
+    <h2>Ce que vous gagnez</h2>
+    <p class="section-sub">Transparent, généreux, et non-négociable à la hausse (ni à la baisse).</p>
+    <div class="remu-grid">
+      <div class="remu-card featured reveal">
+        <div class="remu-badge">🏆 CDI à vie</div>
+        <h3>Package Amour</h3>
+        <span class="remu-price">∞ Amour</span>
+        <ul>
+          <li>💝 Amour sincère et authentique</li>
+          <li>😂 Complicité & fous rires quotidiens</li>
+          <li>🤗 Câlins illimités (à la demande)</li>
+          <li>🌟 Projets communs & aventures partagées</li>
+          <li>🎯 Une partenaire qui sait ce qu'elle veut</li>
+          <li>✨ Évolution possible : bonheur à long terme</li>
+        </ul>
+        <p class="remu-note">Si affinités. Évaluation après période d'essai.</p>
+      </div>
+      <div class="reveal">
         <div class="ideal-section">
           <h3>💫 Référence du poste</h3>
           <div class="ideal-card">
             <div class="ideal-avatar">🎬</div>
             <h4>Robert Pattinson</h4>
-            <p>Le standard de référence. Le benchmark officiel. Ni trop, ni trop peu — juste l'idée de ce que ça pourrait être.</p>
-            <p class="ideal-note">Note : être Robert Pattinson est un avantage mais pas une condition suffisante. Le caractère prime.</p>
+            <p>Le standard de référence. Le benchmark officiel. Ni trop, ni trop peu.</p>
+            <p class="ideal-note">Note : être Robert Pattinson est un avantage mais pas suffisant. Le caractère prime.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
+<!-- FAQ -->
 
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-label">Questions fréquentes</div>
-      <h2>FAQ</h2>
-      <p class="section-sub">Les questions qu'on pose tout le temps. Et les réponses honnêtes.</p>
-      <div class="faq-list">
+<section class="section light" id="faq">
+  <div class="container">
+    <div class="section-label">Questions fréquentes</div>
+    <h2>FAQ</h2>
+    <p class="section-sub">Les questions qu'on pose tout le temps. Et les réponses honnêtes.</p>
+    <div class="faq-list">
 
 ```
-    <div class="faq-item">
-      <button class="faq-question">
-        Pourquoi un site web pour trouver l'amour ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Parce qu'en 2026, on crée bien des sites pour vendre des chaussettes et des imprimantes 3D. Trouver l'homme idéal pour Estelle méritait au moins autant d'efforts. De plus, un cahier des charges clair évite les malentendus. On est professionnels ou on ne l'est pas.</p>
-      </div>
+  <div class="faq-item">
+    <button class="faq-question">Pourquoi un site web pour trouver l'amour ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>Parce qu'en 2026, on crée des sites pour vendre des chaussettes et des imprimantes 3D. Trouver l'homme idéal pour Estelle méritait au moins autant d'efforts. Un cahier des charges clair évite les malentendus. On est professionnels ou on ne l'est pas.</p></div>
     </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        C'est quoi exactement "la corpulence raisonnable" ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Bonne question. "Raisonnable" signifie : tenir dans un lit double sans que l'autre personne se retrouve en train de dormir à 5cm du bord. Ce n'est pas une question de physique parfait — c'est une question de partage équitable de l'espace nocturne. C'est fondamental.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        J'ai 48 ans, est-ce que je peux quand même postuler ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>La limite de 47 ans est indicative. Si vous vous demandez si vous pouvez postuler à 48 ans, la réponse est : peut-être. Si vous vous demandez si vous pouvez postuler à 58 ans, la réponse est : non. Faites la demande via le formulaire, on étudie les cas particuliers avec bienveillance et honnêteté.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Est-ce qu'avoir des enfants est éliminatoire ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Non. Les enfants ne sont pas éliminatoires. Mais ils doivent être autonomes. "Autonomes" signifie : capables de manger, de s'habiller, et de ne pas nécessiter une présence parentale 24h/24. Si vos enfants ont besoin de vous à chaque instant, c'est une organisation à prévoir avant de postuler.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        C'est quoi la période d'essai ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Ça s'appelle "les premiers mois". Pendant cette période, on observe : êtes-vous vraiment drôle ou juste nerveux ? Êtes-vous vraiment présent ou en mode "honeymoon phase" ? Faites-vous vraiment le ménage ou vous contentez-vous de déplacer la poussière ? Le CDI à vie arrive après. Méritez-le.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Je ressemble un peu à Robert Pattinson. Ça compte ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Tout le monde dit qu'il ressemble un peu à Robert Pattinson. Personne ne ressemble à Robert Pattinson. Mais si c'est le cas, mentionnez-le dans le formulaire, on prendra ça en compte avec le même scepticisme affectueux qu'on réserve aux CV qui disent "excellente maîtrise d'Excel".</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Est-ce que "comme tu veux" est vraiment un problème ?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">
-        <p>Oui. "Comme tu veux" est l'une des phrases les plus épuisantes qu'un partenaire puisse prononcer. Avoir un avis, des envies, des idées — c'est ce qu'on appelle participer à une relation. Parfois, choisir le restaurant est un acte d'amour. Souvenez-vous en.</p>
-      </div>
-    </div>
-
   </div>
+
+  <div class="faq-item">
+    <button class="faq-question">C'est quoi exactement "la corpulence raisonnable" ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>"Raisonnable" signifie : tenir dans un lit double sans que l'autre se retrouve à 5cm du bord. Ce n'est pas une question de physique parfait — c'est une question de partage équitable de l'espace nocturne. C'est fondamental.</p></div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">J'ai 48 ans, est-ce que je peux quand même postuler ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>La limite de 47 ans est indicative. Si vous vous demandez si vous pouvez postuler à 48 ans, peut-être. 58 ans : non. Faites la demande via le formulaire, on étudie les cas particuliers avec bienveillance et honnêteté.</p></div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Est-ce qu'avoir des enfants est éliminatoire ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>Non. Les enfants ne sont pas éliminatoires. Mais ils doivent être autonomes : capables de manger, de s'habiller, et de ne pas nécessiter une présence parentale 24h/24. C'est une organisation à prévoir avant de postuler.</p></div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Est-ce que "comme tu veux" est vraiment un problème ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>Oui. "Comme tu veux" est l'une des phrases les plus épuisantes qu'un partenaire puisse prononcer. Avoir un avis, des envies, des idées — c'est ce qu'on appelle participer à une relation. Parfois, choisir le restaurant est un acte d'amour. Souvenez-vous en.</p></div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Je ressemble un peu à Robert Pattinson. Ça compte ?<span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <div class="faq-answer-inner"><p>Tout le monde dit qu'il ressemble un peu à Robert Pattinson. Personne ne ressemble à Robert Pattinson. Mais si c'est le cas, mentionnez-le dans le formulaire — on traitera ça avec le même scepticisme affectueux qu'on réserve aux CV qui disent "excellente maîtrise d'Excel".</p></div>
+    </div>
+  </div>
+
 </div>
 ```
 
-  </section>
+  </div>
+</section>
 
-  <!-- TÉMOIGNAGES -->
+<!-- TÉMOIGNAGES -->
 
-  <section class="section dark" id="temoignages">
-    <div class="container">
-      <div class="section-label">Retours terrain</div>
-      <h2>Avis de l'entourage</h2>
-      <p class="section-sub">Des retours authentiques. On n'a rien censuré, ils étaient déjà adorables.</p>
-      <div class="testimonials-grid">
+<section class="section dark" id="temoignages">
+  <div class="container">
+    <div class="section-label">Retours terrain</div>
+    <h2>Avis de l'entourage</h2>
+    <p class="section-sub">Des retours authentiques. On n'a rien censuré, ils étaient déjà adorables.</p>
+    <div class="testimonials-grid">
 
 ```
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p>"Estelle est la personne la plus drôle que je connaisse. Elle mérite quelqu'un qui peut suivre son rythme. Si vous n'arrivez pas à la faire rire, vous êtes disqualifié avant même d'avoir commandé."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">SB</div>
-        <div>
-          <strong>Sophie B.</strong>
-          <span>Amie de 10 ans</span>
-        </div>
-      </div>
-      <div class="testi-response">Réponse d'Estelle : C'est vrai. Le premier date est un test d'humour.</div>
-    </div>
-
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p>"J'ai vu des hommes déçus de ne pas correspondre aux critères d'Estelle. Mais honnêtement, les critères sont objectivement raisonnables. Avoir des dents, c'est vraiment le minimum."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">ML</div>
-        <div>
-          <strong>Marie L.</strong>
-          <span>Collègue & confidente</span>
-        </div>
-      </div>
-      <div class="testi-response">Réponse d'Estelle : Exactement. Merci Marie.</div>
-    </div>
-
-    <div class="testi-card">
-      <div class="stars">★★★★☆</div>
-      <p>"Elle dit 'je sais ce que je veux' et c'est vrai. C'est rafraîchissant. Même si ça fait peur au début, c'est exactement le genre de clarté qu'on cherche tous quelque part."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">TC</div>
-        <div>
-          <strong>Thomas C.</strong>
-          <span>Frère / Témoin objectif</span>
-        </div>
-      </div>
-      <div class="testi-response">Réponse d'Estelle : 4 étoiles sur 5 de mon frère, c'est déjà beau.</div>
-    </div>
-
-    <div class="testi-card">
-      <div class="stars">★★★★★</div>
-      <p>"Si vous cherchez une femme qui vous laisse regarder le foot en paix ET qui sait quand venir faire un câlin, c'est elle. Le mode d'emploi est sur ce site. Lisez-le."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">PD</div>
-        <div>
-          <strong>Pierre D.</strong>
-          <span>Ami de longue date</span>
-        </div>
-      </div>
-      <div class="testi-response">Réponse d'Estelle : Le foot, c'est acceptable. Le golf le dimanche matin, c'est une discussion à avoir.</div>
-    </div>
-
+  <div class="testi-card reveal">
+    <div class="stars">★★★★★</div>
+    <p class="testi-quote">"Estelle est la personne la plus drôle que je connaisse. Si vous n'arrivez pas à la faire rire, vous êtes disqualifié avant même d'avoir commandé."</p>
+    <div class="testi-author"><div class="testi-avatar">SB</div><div><span class="testi-name">Sophie B.</span><span class="testi-role">Amie de 10 ans</span></div></div>
+    <div class="testi-response">Réponse d'Estelle : C'est vrai. Le 1er date est un test d'humour.</div>
   </div>
+
+  <div class="testi-card reveal">
+    <div class="stars">★★★★★</div>
+    <p class="testi-quote">"Les critères sont objectivement raisonnables. Avoir des dents, c'est le minimum. Je ne comprends pas pourquoi ça pose problème."</p>
+    <div class="testi-author"><div class="testi-avatar">ML</div><div><span class="testi-name">Marie L.</span><span class="testi-role">Collègue & confidente</span></div></div>
+    <div class="testi-response">Réponse d'Estelle : Exactement. Merci Marie.</div>
+  </div>
+
+  <div class="testi-card reveal">
+    <div class="stars">★★★★☆</div>
+    <p class="testi-quote">"Elle dit 'je sais ce que je veux' et c'est vrai. C'est rafraîchissant. Même si ça fait un peu peur au début."</p>
+    <div class="testi-author"><div class="testi-avatar">TC</div><div><span class="testi-name">Thomas C.</span><span class="testi-role">Frère / Témoin objectif</span></div></div>
+    <div class="testi-response">Réponse d'Estelle : 4 étoiles de mon frère, c'est déjà beau.</div>
+  </div>
+
+  <div class="testi-card reveal">
+    <div class="stars">★★★★★</div>
+    <p class="testi-quote">"Le mode d'emploi est sur ce site. Lisez-le. Si vous ne le lisez pas avant de postuler, vous méritez ce qui vous arrive."</p>
+    <div class="testi-author"><div class="testi-avatar">PD</div><div><span class="testi-name">Pierre D.</span><span class="testi-role">Ami de longue date</span></div></div>
+    <div class="testi-response">Réponse d'Estelle : Il est sage, Pierre.</div>
+  </div>
+
 </div>
 ```
 
-  </section>
+  </div>
+</section>
 
-  <!-- FORMULAIRE -->
+<!-- CONTACT -->
 
-  <section class="section" id="candidater">
-    <div class="container">
-      <div class="section-label">Dépôt de candidature</div>
-      <h2>Envoyez votre candidature</h2>
-      <p class="section-sub">Formulaire soumis = candidature lue (avec attention). Merci de lire les conditions.</p>
+<section class="section light" id="candidater">
+  <div class="container">
+    <div class="section-label">Dépôt de candidature</div>
+    <h2>Postulez ici</h2>
+    <p class="section-sub">Formulaire soumis = candidature lue avec attention.</p>
+    <div class="contact-wrapper">
+      <div class="contact-rules">
+        <h3>📋 Conditions</h3>
+        <div class="rule-list">
+          <div class="rule">❌ Pas de photo dans les WC</div>
+          <div class="rule">❌ Pas de "t'es trop bien pour rester seule"</div>
+          <div class="rule">❌ Pas de "j'ai pas lu mais je réponds"</div>
+          <div class="rule">✅ Une vraie présentation, avec humour si possible</div>
+          <div class="rule">✅ Honnêteté totale — elle le vaut bien</div>
+          <div class="rule">⏱️ Délai de réponse : variable selon l'intérêt suscité</div>
+        </div>
+      </div>
 
 ```
-  <div class="contact-wrapper">
-    <div class="contact-rules">
-      <h3>📋 Conditions de candidature</h3>
-      <div class="rule-list">
-        <div class="rule">❌ Pas de "j'ai pas lu mais je réponds quand même" — lisez le site entier</div>
-        <div class="rule">❌ Pas de "t'es trop bien pour rester seule" — on sait, merci</div>
-        <div class="rule">❌ Pas de photo musclée dans les WC — soyez sérieux</div>
-        <div class="rule">❌ Pas de CV de 10 pages — soyez concis</div>
-        <div class="rule">✅ Une vraie présentation, avec humour si possible</div>
-        <div class="rule">✅ Honnêteté totale — elle le vaut bien</div>
-        <div class="rule">⏱️ Délai de réponse : variable selon l'intérêt suscité</div>
-      </div>
-    </div>
-
+  <div>
     <form class="contact-form" id="contactForm">
       <div class="form-row">
         <div class="form-group">
           <label>Votre prénom *</label>
-          <input type="text" name="prenom" placeholder="Votre prénom" required />
+          <input type="text" placeholder="Votre prénom" required />
         </div>
         <div class="form-group">
           <label>Votre âge *</label>
-          <input type="number" name="age" placeholder="Entre 40 et 47... normalement" min="35" max="60" required />
+          <input type="number" placeholder="Entre 40 et 47..." min="35" max="65" required />
         </div>
       </div>
       <div class="form-group">
         <label>Votre email *</label>
-        <input type="email" name="email" placeholder="Pour qu'on puisse vous répondre" required />
+        <input type="email" placeholder="Pour qu'on puisse vous répondre" required />
       </div>
       <div class="form-group">
-        <label>Avez-vous un permis de conduire ET une voiture ? *</label>
-        <select name="permis" required>
+        <label>Permis de conduire + voiture ? *</label>
+        <select required>
           <option value="">— Répondez honnêtement —</option>
-          <option value="oui">Oui, les deux</option>
-          <option value="permis-seulement">Permis oui, voiture non (explications à fournir)</option>
-          <option value="non">Non (candidature compromise)</option>
-          <option value="trottinette">J'ai une trottinette (au revoir)</option>
+          <option>Oui, les deux ✅</option>
+          <option>Permis oui, voiture non (justification requise)</option>
+          <option>Non (candidature compromise)</option>
+          <option>J'ai une trottinette (au revoir)</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Niveau d'humour auto-évalué *</label>
-        <select name="humour" required>
+        <label>Niveau d'humour *</label>
+        <select required>
           <option value="">— Soyez honnête —</option>
-          <option value="excellent">Excellent — je fais rire les gens en soirée</option>
-          <option value="bon">Bon — je comprends les blagues et j'en fais quelques-unes</option>
-          <option value="moyen">Moyen — j'essaie</option>
-          <option value="nul">Nul — mais j'ai d'autres qualités (lesquelles ?)</option>
+          <option>Excellent — je fais rire les gens en soirée</option>
+          <option>Bon — je comprends les blagues et j'en fais</option>
+          <option>Moyen — j'essaie</option>
+          <option>Nul — mais j'ai d'autres qualités</option>
         </select>
       </div>
       <div class="form-group">
         <label>Pourquoi vous ? *</label>
-        <textarea name="message" placeholder="Vendez-vous. Avec humour de préférence. Minimum 3 lignes, maximum votre vie entière." rows="5" required></textarea>
+        <textarea placeholder="Vendez-vous. Avec humour de préférence. Minimum 3 lignes." rows="5" required></textarea>
       </div>
-      <div class="form-group checkbox-group">
+      <div class="form-group">
         <label class="checkbox-label">
-          <input type="checkbox" name="accept" required />
-          J'accepte qu'Estelle puisse juger ma candidature avec bienveillance ET exigence, et je m'engage à ne pas disparaître comme un Pokémon si ça se passe bien. *
+          <input type="checkbox" required />
+          J'accepte qu'Estelle juge ma candidature avec bienveillance ET exigence, et je m'engage à ne pas disparaître comme un Pokémon si ça se passe bien. *
         </label>
       </div>
-      <button type="submit" class="btn btn-primary btn-full">
-        Envoyer ma candidature ❤️
-      </button>
+      <button type="submit" class="btn btn-primary btn-full">Envoyer ma candidature ❤️</button>
     </form>
 
-    <div class="form-success" id="formSuccess" style="display:none">
+    <div id="formSuccess" style="display:none" class="form-success">
       <div class="success-icon">🎉</div>
       <h3>Candidature reçue !</h3>
-      <p>Estelle examinera votre dossier avec l'attention qu'il mérite. Si vous avez été drôle, vous avez déjà un avantage. Courage. ✨</p>
+      <p>Estelle examinera votre dossier avec l'attention qu'il mérite. Si vous avez été drôle, vous avez déjà un avantage. ✨</p>
     </div>
   </div>
 </div>
 ```
 
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
+<!-- FOOTER -->
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">Estelle<span>Love</span> ❤️</div>
-          <p>La recherche de l'amour sur mesure, avec des critères clairs et beaucoup d'humour.<br>Un CDI à vie pour la bonne personne.</p>
-        </div>
-        <div class="footer-nav">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#profil">Profil</a></li>
-            <li><a href="#criteres">Critères</a></li>
-            <li><a href="#missions">Missions</a></li>
-          </ul>
-        </div>
-        <div class="footer-nav">
-          <h4>Informations</h4>
-          <ul>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#temoignages">Témoignages</a></li>
-            <li><a href="#candidater">Postuler</a></li>
-            <li><a href="#remuneration">Rémunération</a></li>
-          </ul>
-        </div>
-        <div class="footer-nav">
-          <h4>Disponibilité</h4>
-          <p>Lun–Dim : Disponible en permanence<br>
-          Humeur : Bonne si on la mérite<br>
-          Câlins : Sur demande raisonnable<br>
-          Patience : Limitée mais extensible</p>
-        </div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Estelle<span>Love</span> ❤️</div>
+        <p>La recherche de l'amour sur mesure, avec des critères clairs et beaucoup d'humour. Un CDI à vie pour la bonne personne.</p>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 — Estelle Love ❤️ — Tous droits réservés, amour illimité</p>
-        <p class="footer-disclaimer">* Ce site est une création affectueuse. Aucune candidature n'a été maltaitée lors de sa rédaction. Toutes les blagues sont vraies.</p>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#criteres">Critères</a></li>
+          <li><a href="#missions">Missions</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#temoignages">Avis</a></li>
+          <li><a href="#candidater">Postuler</a></li>
+          <li><a href="#remuneration">Rémunération</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Disponibilité</h4>
+        <p>Lun–Dim : Disponible<br>Humeur : Bonne si méritée<br>Câlins : Sur demande<br>Patience : Limitée mais extensible</p>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <p>© 2026 — Estelle Love ❤️ — Tous droits réservés, amour illimité</p>
+      <p>* Ce site est une création affectueuse. Toutes les blagues sont vraies.</p>
+    </div>
+  </div>
+</footer>
 
-  <script src="script.js"></script>
+<script>
+  // NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+  // HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('active');
+  }));
+  document.addEventListener('click', e => {
+    if (!navbar.contains(e.target)) { navLinks.classList.remove('open'); hamburger.classList.remove('active'); }
+  });
+
+  // DROPDOWN MOBILE
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', e => {
+      if (window.innerWidth <= 900) { e.preventDefault(); btn.closest('.dropdown').classList.toggle('open'); }
+    });
+  });
+
+  // COUNTERS
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / 1600, 1);
+        el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      cObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => cObs.observe(el));
+
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').classList.remove('open');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-answer').classList.add('open');
+      }
+    });
+  });
+
+  // SCROLL REVEAL
+  const rObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); rObs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => rObs.observe(el));
+
+  // EASTER EGG penalties
+  const funMsgs = ["❌ Candidature refusée d'office","🚪 La porte est par là","😂 Passez votre chemin","💀 RIP votre candidature","🚫 Blacklist activée"];
+  document.querySelectorAll('.penalty-row').forEach((row, i) => {
+    row.addEventListener('click', () => {
+      const val = row.querySelector('.penalty-val');
+      val.style.opacity = '0';
+      setTimeout(() => { val.textContent = funMsgs[i % funMsgs.length]; val.style.opacity = '1'; }, 200);
+    });
+  });
+
+  // FORM
+  const form = document.getElementById('contactForm');
+  const successDiv = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Envoi en cours… 💌';
+      btn.disabled = true;
+      setTimeout(() => { form.style.display = 'none'; successDiv.style.display = 'block'; successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 1200);
+    });
+  }
+</script>
 
 </body>
 </html>
