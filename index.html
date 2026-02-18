@@ -1,108 +1,542 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estelle Love </title>
-
-  <!-- Polices -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Feuille de style locale -->
-  <link rel="stylesheet" href="style.css">
-
+  <title>Estelle Love ❤️ — Recrutement en cours</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
-
 <body>
 
-  <header>
-    <h1>Estelle Love ? ❤️</h1>
-    <div class="subtitle">Parce qu’Estelle mérite son homme idéal (et complet… avec dents).</div>
-  </header>
+  <!-- NAV -->
 
-  <section>
-    <h2>🔎 Recherche : Partenaire de vie motivé, équipé et émotionnellement stable</h2>
-    <p><strong>Âge recherché :</strong> 40 à 47 ans</p>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">Estelle<span>Love</span> ❤️</div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#profil">Le Profil</a></li>
+      <li class="dropdown">
+        <a href="#criteres" class="dropdown-toggle">Critères ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#criteres-physiques">Physiques</a></li>
+          <li><a href="#criteres-comportement">Comportement</a></li>
+          <li><a href="#bonus">Bonus</a></li>
+        </ul>
+      </li>
+      <li><a href="#missions">Missions</a></li>
+      <li><a href="#remuneration">Rémunération</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#candidater">Postuler</a></li>
+    </ul>
+  </nav>
 
+  <!-- HERO -->
+
+  <section class="hero" id="accueil">
+    <div class="hero-badge">🏆 Poste à pourvoir immédiatement</div>
+    <h1>L'amour sur mesure.<br><em>Si vous le méritez.</em></h1>
+    <p class="hero-sub">Une femme exceptionnelle. Des critères clairs. Un CDI à vie si affinités.<br>Parce qu'Estelle mérite son homme idéal — et complet, avec dents.</p>
+    <div class="hero-cta">
+      <a href="#criteres" class="btn btn-primary">Voir le cahier des charges</a>
+      <a href="#candidater" class="btn btn-outline">Postuler maintenant</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="stat-num" data-target="1">0</span><span class="stat-label">Estelle disponible</span></div>
+      <div class="stat"><span class="stat-num" data-target="0">0</span><span class="stat-label">Mecs qui cochent toutes les cases</span></div>
+      <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-label">% sans prise de tête</span></div>
+    </div>
+    <p class="stat-note">* Ceux qui se reconnaissent dans la catégorie 0, passez votre chemin.</p>
+  </section>
+
+  <!-- PROFIL -->
+
+  <section class="section" id="profil">
+    <div class="container">
+      <div class="section-label">Le dossier de candidature</div>
+      <h2>À propos d'Estelle</h2>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <div class="profile-avatar">👩‍🦰</div>
+          <h3>Estelle</h3>
+          <p class="profile-title">Femme extraordinaire disponible</p>
+          <blockquote>"Je sais ce que je veux. C'est rare, appréciez-le."<br>— Estelle</blockquote>
+        </div>
+        <div class="profile-info">
+          <div class="value-tag">💖 Ce qu'elle offre</div>
+          <ul class="value-list">
+            <li>✨ Une partenaire qui sait exactement ce qu'elle veut</li>
+            <li>😂 Des fous rires garantis (et vérifiés par des témoins)</li>
+            <li>🤗 Des câlins aux moments les plus inopinément parfaits</li>
+            <li>🔥 Une vie de couple réelle, pas une colocation déguisée</li>
+            <li>📋 Des critères honnêtes — vous savez à quoi vous attendre</li>
+            <li>💝 Un amour sincère pour la bonne personne</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRITÈRES -->
+
+  <section class="section dark" id="criteres">
+    <div class="container">
+      <div class="section-label">Conditions minimales d'accès</div>
+      <h2>Le cahier des charges</h2>
+      <p class="section-sub">Transparent, honnête et non-négociable. Comme les étoiles dans le ciel — elles sont là, point.</p>
+
+```
+  <!-- Physiques -->
+  <div id="criteres-physiques" class="criteria-block">
     <h3>💖 Conditions physiques minimales</h3>
-    <ul>
-      <li>Doit posséder des dents. Pas forcément 32, mais un sourire qui ne fait pas peur aux enfants.</li>
-      <li>Corpulence raisonnable : doit pouvoir tenir dans un lit sans coloniser 80 % de la surface.</li>
-      <li>Entier : bras, jambes, oreilles… On veut un modèle complet, pas un puzzle.</li>
-    </ul>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-icon">🦷</div>
+        <h4>Les dents</h4>
+        <p>Pas forcément 32. Mais un sourire qui ne fait pas fuir les enfants ni les adultes sobres. C'est le minimum syndical.</p>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">⚖️</div>
+        <h4>Corpulence raisonnable</h4>
+        <p>Doit pouvoir tenir dans un lit sans coloniser 80% de la surface disponible. L'espace vital est un droit fondamental.</p>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">🧩</div>
+        <h4>Entier</h4>
+        <p>Bras, jambes, oreilles… On veut un modèle complet, pas un puzzle. Âge requis : 40 à 47 ans.</p>
+      </div>
+    </div>
+  </div>
 
-    <h3>🚗 Mobilité & autonomie</h3>
-    <ul>
-      <li>Permis B + voiture obligatoire.</li>
-      <li>Arrive au premier date en voiture : pas trottinette, pas voiture sans permis.</li>
-      <li>Si enfants : ils doivent être autonomes.</li>
-    </ul>
+  <!-- Mobilité -->
+  <div class="criteria-block">
+    <h3>🚗 Mobilité & Autonomie</h3>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-icon">🚙</div>
+        <h4>Permis B + véhicule</h4>
+        <p>Obligatoires. Le premier date se fait EN VOITURE. Pas trottinette, pas vélo, pas voiture sans permis. En voiture.</p>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">👦</div>
+        <h4>Enfants autonomes</h4>
+        <p>Si vous en avez : ils doivent être capables de manger seuls et de ne pas appeler leur père toutes les 20 minutes.</p>
+      </div>
+    </div>
+  </div>
 
+  <!-- Comportement -->
+  <div id="criteres-comportement" class="criteria-block">
     <h3>😄 Compétences comportementales</h3>
-    <ul>
-      <li>Pas fainéant</li>
-      <li>Agréable</li>
-      <li>Beaucoup d’humour</li>
-      <li>Sincère</li>
-    </ul>
+    <div class="tags-grid">
+      <span class="tag green">Pas fainéant</span>
+      <span class="tag green">Agréable</span>
+      <span class="tag green">Beaucoup d'humour</span>
+      <span class="tag green">Sincère</span>
+      <span class="tag red">Égocentrique</span>
+      <span class="tag red">Invisible émotionnellement</span>
+      <span class="tag red">Allergique aux câlins</span>
+      <span class="tag red">"T'es trop sensible"</span>
+    </div>
+  </div>
 
-    <h3>⭐ Bonus appréciés</h3>
-    <ul>
-      <li>Sait cuisiner</li>
-      <li>N’appelle pas sa mère pour lancer une machine</li>
-      <li>Ne dit pas “t’es trop sensible” quand Estelle exprime une émotion</li>
-      <li>Capable de planifier une sortie sans dire “comme tu veux”</li>
-      <li>Cerveau fonctionnel dès le lundi matin</li>
-      <li>A compris que “faire le ménage” ≠ déplacer la poussière</li>
-    </ul>
+  <!-- Bonus -->
+  <div id="bonus" class="criteria-block">
+    <h3>⭐ Bonus appréciés (mais non obligatoires... enfin presque)</h3>
+    <div class="bonus-list">
+      <div class="bonus-item">✅ Sait cuisiner (au moins les pâtes sans les brûler)</div>
+      <div class="bonus-item">✅ N'appelle pas sa mère pour lancer une machine</div>
+      <div class="bonus-item">✅ Ne dit pas "t'es trop sensible" quand Estelle exprime une émotion</div>
+      <div class="bonus-item">✅ Capable de planifier une sortie sans dire "comme tu veux"</div>
+      <div class="bonus-item">✅ Cerveau fonctionnel dès le lundi matin</div>
+      <div class="bonus-item">✅ A compris que "faire le ménage" ≠ déplacer la poussière</div>
+    </div>
+  </div>
 
-    <h3>🎯 Missions principales</h3>
-    <ul>
-      <li>Faire rire, soutenir, partager, câliner, et ne pas disparaître comme un Pokémon.</li>
-      <li>Participer à la vie de couple, pas en mode colocataire.</li>
-      <li>Respecter l’espace vital mais savoir venir faire un câlin au bon moment.</li>
-      <li>Être présent, mais pas collant.</li>
-      <li>Savoir surprendre (positivement).</li>
-    </ul>
-
-    <h3>💝 Rémunération</h3>
-    <ul>
-      <li>Amour, complicité, fous rires, projets, câlins.</li>
-      <li>Une partenaire qui sait ce qu’elle veut.</li>
-      <li>Possibilité d’évolution : CDI à vie si affinités.</li>
-    </ul>
-
-    <h3>💫 Idéal masculin : Robert Pattinson</h3>
-
-    <hr>
-
-    <h2>💌 Candidate-toi pour Estelle</h2>
-    <p>Remplis ce formulaire si tu penses correspondre au poste :</p>
-
-    <!-- Formulaire corrigé -->
-    <form id="applicationForm" onsubmit="handleSubmit(event)">
-      <input type="text" name="name" placeholder="Ton prénom" required>
-      <input type="number" name="age" placeholder="Ton âge" min="18" required>
-      <input type="text" name="car" placeholder="Ta voiture (marque & modèle)" required>
-      <textarea name="message" rows="5" placeholder="Décris-toi, fais rire Estelle 😄" required></textarea>
-      <button type="submit">Envoyer ma candidature ❤️</button>
-    </form>
-
-    <p id="confirmation" style="margin-top:20px; color:#ff3e85; font-weight:bold; display:none;">
-      Merci ! Estelle examinera ta candidature avec attention ✨
-    </p>
+  <!-- Suppléments & Pénalités -->
+  <div class="criteria-block">
+    <h3>🚫 Pénalités automatiques</h3>
+    <div class="penalty-table">
+      <div class="penalty-row">
+        <span class="penalty-item">"Mon ex était pas comme ça"</span>
+        <span class="penalty-val">Blacklist immédiate</span>
+      </div>
+      <div class="penalty-row">
+        <span class="penalty-item">Arriver en retard au 1er RDV sans prévenir</span>
+        <span class="penalty-val">Candidature annulée</span>
+      </div>
+      <div class="penalty-row">
+        <span class="penalty-item">Dire "comme tu veux" plus de 3 fois</span>
+        <span class="penalty-val">-50% chance de 2ème date</span>
+      </div>
+      <div class="penalty-row">
+        <span class="penalty-item">Ne pas faire de câlins</span>
+        <span class="penalty-val">Rupture immédiate</span>
+      </div>
+      <div class="penalty-row">
+        <span class="penalty-item">Appeler sa mère pour une machine à laver</span>
+        <span class="penalty-val">Motif légitime de rupture</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
   </section>
 
-  <footer>
-    © 2026 — Estelle Love ? — Tous droits réservés, amour illimité ❤️
+  <!-- MISSIONS -->
+
+  <section class="section" id="missions">
+    <div class="container">
+      <div class="section-label">Fiche de poste</div>
+      <h2>Missions principales</h2>
+      <p class="section-sub">Ce qu'on attend du candidat retenu. Lisez attentivement avant de postuler.</p>
+      <div class="missions-grid">
+        <div class="mission-card">
+          <div class="mission-num">01</div>
+          <h4>Faire rire</h4>
+          <p>Soutenir, partager, câliner, et ne pas disparaître comme un Pokémon après le premier désaccord.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-num">02</div>
+          <h4>Participer</h4>
+          <p>À la vie de couple, pas en mode colocataire. Une vraie présence, pas un fantôme en pantoufles.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-num">03</div>
+          <h4>Respecter l'espace</h4>
+          <p>Savoir venir faire un câlin au bon moment. Être présent, mais pas collant. L'équilibre, c'est tout un art.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-num">04</div>
+          <h4>Surprendre</h4>
+          <p>Positivement, bien sûr. Pas du genre "surprise, j'ai invité mes amis sans prévenir un dimanche matin".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉMUNÉRATION -->
+
+  <section class="section dark" id="remuneration">
+    <div class="container">
+      <div class="section-label">Package de rémunération</div>
+      <h2>Ce que vous gagnez</h2>
+      <p class="section-sub">Transparent, généreux, et non-négociable à la hausse (ni à la baisse).</p>
+      <div class="remu-grid">
+        <div class="remu-card featured">
+          <div class="remu-badge">🏆 Idéal</div>
+          <h3>CDI à vie</h3>
+          <p class="remu-price">∞ Amour</p>
+          <ul>
+            <li>💝 Amour sincère et authentique</li>
+            <li>😂 Complicité & fous rires quotidiens</li>
+            <li>🤗 Câlins illimités (à la demande)</li>
+            <li>🌟 Projets communs & aventures partagées</li>
+            <li>🎯 Une partenaire qui sait ce qu'elle veut</li>
+            <li>✨ Possibilité d'évolution : bonheur à long terme</li>
+          </ul>
+          <p class="remu-note">Si affinités. Évaluation après période d'essai.</p>
+        </div>
+        <div class="ideal-section">
+          <h3>💫 Référence du poste</h3>
+          <div class="ideal-card">
+            <div class="ideal-avatar">🎬</div>
+            <h4>Robert Pattinson</h4>
+            <p>Le standard de référence. Le benchmark officiel. Ni trop, ni trop peu — juste l'idée de ce que ça pourrait être.</p>
+            <p class="ideal-note">Note : être Robert Pattinson est un avantage mais pas une condition suffisante. Le caractère prime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-label">Questions fréquentes</div>
+      <h2>FAQ</h2>
+      <p class="section-sub">Les questions qu'on pose tout le temps. Et les réponses honnêtes.</p>
+      <div class="faq-list">
+
+```
+    <div class="faq-item">
+      <button class="faq-question">
+        Pourquoi un site web pour trouver l'amour ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Parce qu'en 2026, on crée bien des sites pour vendre des chaussettes et des imprimantes 3D. Trouver l'homme idéal pour Estelle méritait au moins autant d'efforts. De plus, un cahier des charges clair évite les malentendus. On est professionnels ou on ne l'est pas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        C'est quoi exactement "la corpulence raisonnable" ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Bonne question. "Raisonnable" signifie : tenir dans un lit double sans que l'autre personne se retrouve en train de dormir à 5cm du bord. Ce n'est pas une question de physique parfait — c'est une question de partage équitable de l'espace nocturne. C'est fondamental.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        J'ai 48 ans, est-ce que je peux quand même postuler ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>La limite de 47 ans est indicative. Si vous vous demandez si vous pouvez postuler à 48 ans, la réponse est : peut-être. Si vous vous demandez si vous pouvez postuler à 58 ans, la réponse est : non. Faites la demande via le formulaire, on étudie les cas particuliers avec bienveillance et honnêteté.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Est-ce qu'avoir des enfants est éliminatoire ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Non. Les enfants ne sont pas éliminatoires. Mais ils doivent être autonomes. "Autonomes" signifie : capables de manger, de s'habiller, et de ne pas nécessiter une présence parentale 24h/24. Si vos enfants ont besoin de vous à chaque instant, c'est une organisation à prévoir avant de postuler.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        C'est quoi la période d'essai ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Ça s'appelle "les premiers mois". Pendant cette période, on observe : êtes-vous vraiment drôle ou juste nerveux ? Êtes-vous vraiment présent ou en mode "honeymoon phase" ? Faites-vous vraiment le ménage ou vous contentez-vous de déplacer la poussière ? Le CDI à vie arrive après. Méritez-le.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Je ressemble un peu à Robert Pattinson. Ça compte ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Tout le monde dit qu'il ressemble un peu à Robert Pattinson. Personne ne ressemble à Robert Pattinson. Mais si c'est le cas, mentionnez-le dans le formulaire, on prendra ça en compte avec le même scepticisme affectueux qu'on réserve aux CV qui disent "excellente maîtrise d'Excel".</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Est-ce que "comme tu veux" est vraiment un problème ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Oui. "Comme tu veux" est l'une des phrases les plus épuisantes qu'un partenaire puisse prononcer. Avoir un avis, des envies, des idées — c'est ce qu'on appelle participer à une relation. Parfois, choisir le restaurant est un acte d'amour. Souvenez-vous en.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+
+  <section class="section dark" id="temoignages">
+    <div class="container">
+      <div class="section-label">Retours terrain</div>
+      <h2>Avis de l'entourage</h2>
+      <p class="section-sub">Des retours authentiques. On n'a rien censuré, ils étaient déjà adorables.</p>
+      <div class="testimonials-grid">
+
+```
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Estelle est la personne la plus drôle que je connaisse. Elle mérite quelqu'un qui peut suivre son rythme. Si vous n'arrivez pas à la faire rire, vous êtes disqualifié avant même d'avoir commandé."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SB</div>
+        <div>
+          <strong>Sophie B.</strong>
+          <span>Amie de 10 ans</span>
+        </div>
+      </div>
+      <div class="testi-response">Réponse d'Estelle : C'est vrai. Le premier date est un test d'humour.</div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"J'ai vu des hommes déçus de ne pas correspondre aux critères d'Estelle. Mais honnêtement, les critères sont objectivement raisonnables. Avoir des dents, c'est vraiment le minimum."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ML</div>
+        <div>
+          <strong>Marie L.</strong>
+          <span>Collègue & confidente</span>
+        </div>
+      </div>
+      <div class="testi-response">Réponse d'Estelle : Exactement. Merci Marie.</div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★☆</div>
+      <p>"Elle dit 'je sais ce que je veux' et c'est vrai. C'est rafraîchissant. Même si ça fait peur au début, c'est exactement le genre de clarté qu'on cherche tous quelque part."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TC</div>
+        <div>
+          <strong>Thomas C.</strong>
+          <span>Frère / Témoin objectif</span>
+        </div>
+      </div>
+      <div class="testi-response">Réponse d'Estelle : 4 étoiles sur 5 de mon frère, c'est déjà beau.</div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Si vous cherchez une femme qui vous laisse regarder le foot en paix ET qui sait quand venir faire un câlin, c'est elle. Le mode d'emploi est sur ce site. Lisez-le."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PD</div>
+        <div>
+          <strong>Pierre D.</strong>
+          <span>Ami de longue date</span>
+        </div>
+      </div>
+      <div class="testi-response">Réponse d'Estelle : Le foot, c'est acceptable. Le golf le dimanche matin, c'est une discussion à avoir.</div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- FORMULAIRE -->
+
+  <section class="section" id="candidater">
+    <div class="container">
+      <div class="section-label">Dépôt de candidature</div>
+      <h2>Envoyez votre candidature</h2>
+      <p class="section-sub">Formulaire soumis = candidature lue (avec attention). Merci de lire les conditions.</p>
+
+```
+  <div class="contact-wrapper">
+    <div class="contact-rules">
+      <h3>📋 Conditions de candidature</h3>
+      <div class="rule-list">
+        <div class="rule">❌ Pas de "j'ai pas lu mais je réponds quand même" — lisez le site entier</div>
+        <div class="rule">❌ Pas de "t'es trop bien pour rester seule" — on sait, merci</div>
+        <div class="rule">❌ Pas de photo musclée dans les WC — soyez sérieux</div>
+        <div class="rule">❌ Pas de CV de 10 pages — soyez concis</div>
+        <div class="rule">✅ Une vraie présentation, avec humour si possible</div>
+        <div class="rule">✅ Honnêteté totale — elle le vaut bien</div>
+        <div class="rule">⏱️ Délai de réponse : variable selon l'intérêt suscité</div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Votre prénom *</label>
+          <input type="text" name="prenom" placeholder="Votre prénom" required />
+        </div>
+        <div class="form-group">
+          <label>Votre âge *</label>
+          <input type="number" name="age" placeholder="Entre 40 et 47... normalement" min="35" max="60" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Votre email *</label>
+        <input type="email" name="email" placeholder="Pour qu'on puisse vous répondre" required />
+      </div>
+      <div class="form-group">
+        <label>Avez-vous un permis de conduire ET une voiture ? *</label>
+        <select name="permis" required>
+          <option value="">— Répondez honnêtement —</option>
+          <option value="oui">Oui, les deux</option>
+          <option value="permis-seulement">Permis oui, voiture non (explications à fournir)</option>
+          <option value="non">Non (candidature compromise)</option>
+          <option value="trottinette">J'ai une trottinette (au revoir)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Niveau d'humour auto-évalué *</label>
+        <select name="humour" required>
+          <option value="">— Soyez honnête —</option>
+          <option value="excellent">Excellent — je fais rire les gens en soirée</option>
+          <option value="bon">Bon — je comprends les blagues et j'en fais quelques-unes</option>
+          <option value="moyen">Moyen — j'essaie</option>
+          <option value="nul">Nul — mais j'ai d'autres qualités (lesquelles ?)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Pourquoi vous ? *</label>
+        <textarea name="message" placeholder="Vendez-vous. Avec humour de préférence. Minimum 3 lignes, maximum votre vie entière." rows="5" required></textarea>
+      </div>
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" name="accept" required />
+          J'accepte qu'Estelle puisse juger ma candidature avec bienveillance ET exigence, et je m'engage à ne pas disparaître comme un Pokémon si ça se passe bien. *
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">
+        Envoyer ma candidature ❤️
+      </button>
+    </form>
+
+    <div class="form-success" id="formSuccess" style="display:none">
+      <div class="success-icon">🎉</div>
+      <h3>Candidature reçue !</h3>
+      <p>Estelle examinera votre dossier avec l'attention qu'il mérite. Si vous avez été drôle, vous avez déjà un avantage. Courage. ✨</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Estelle<span>Love</span> ❤️</div>
+          <p>La recherche de l'amour sur mesure, avec des critères clairs et beaucoup d'humour.<br>Un CDI à vie pour la bonne personne.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#criteres">Critères</a></li>
+            <li><a href="#missions">Missions</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#candidater">Postuler</a></li>
+            <li><a href="#remuneration">Rémunération</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h4>Disponibilité</h4>
+          <p>Lun–Dim : Disponible en permanence<br>
+          Humeur : Bonne si on la mérite<br>
+          Câlins : Sur demande raisonnable<br>
+          Patience : Limitée mais extensible</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 — Estelle Love ❤️ — Tous droits réservés, amour illimité</p>
+        <p class="footer-disclaimer">* Ce site est une création affectueuse. Aucune candidature n'a été maltaitée lors de sa rédaction. Toutes les blagues sont vraies.</p>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById("confirmation").style.display = "block";
-    }
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
